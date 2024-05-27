@@ -5,6 +5,7 @@ import 'package:tayarim_mobile/services/repository/auth/api_auth_data_source.dar
 import 'package:tayarim_mobile/services/repository/auth/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -24,22 +25,33 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MultiBlocProvider(
-          providers: [
-            BlocProvider<ConnexionBloc>(
-              create: (context) => ConnexionBloc(
-                authRepository: context.read<AuthRepository>(),
-              ),
+        providers: [
+          BlocProvider<ConnexionBloc>(
+            create: (context) => ConnexionBloc(
+              authRepository: context.read<AuthRepository>(),
             ),
-            BlocProvider<InscriptionBloc>(
-              create: (context) => InscriptionBloc(
-                authRepository: context.read<AuthRepository>(),
-              ),
+          ),
+          BlocProvider<InscriptionBloc>(
+            create: (context) => InscriptionBloc(
+              authRepository: context.read<AuthRepository>(),
             ),
-          ],
-          child: MaterialApp.router(
-            title: 'tayarim_mobile',
-            routerConfig: router,
-          )),
+          ),
+        ],
+        child: MaterialApp.router(
+          title: 'tayarim_mobile',
+          debugShowCheckedModeBanner: false,
+          routerConfig: router,
+          theme: ThemeData(
+            useMaterial3: true,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color(0xff1c2434),
+              background: const Color(0xfff1f5f9),
+              primary: Colors.black,
+            ),
+            fontFamily: 'Sans Serif',
+          ),
+        ),
+      ),
     );
   }
 }
