@@ -32,10 +32,8 @@ class ConnexionScreen extends StatelessWidget {
                         child: Image.asset(
                             'assets/images/white-logo-short-removebg.png',
                             width: 300)),
-                    Text('Connexion',
-                        style: Theme.of(context).textTheme.headlineMedium),
                     Padding(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.fromLTRB(8, 30, 8, 8),
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
