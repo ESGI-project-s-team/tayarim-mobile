@@ -1,4 +1,4 @@
-package com.example.tayarim_mobile
+package com.tayarim.tayarim_mobile
 
 import io.flutter.embedding.android.FlutterActivity
 
