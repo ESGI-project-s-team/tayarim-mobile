@@ -9,7 +9,7 @@ class ApiAuthDataSource extends AuthDataSource {
   Future<String> doConnexion(ConnexionUser connexionUser) async {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'https://xoc1-kd2t-7p9b.n7c.xano.io/api:xbcc5VEi',
+        baseUrl: 'https://xoc1-kd2t-7p9b.loc.xano.io/api:xbcc5VEi',
       ),
     );
 
