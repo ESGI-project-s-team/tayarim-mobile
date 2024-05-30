@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../services/connexion/connexion_bloc.dart';
 
 class ConnexionScreen extends StatelessWidget {
-  ConnexionScreen({Key? key}) : super(key: key);
+  ConnexionScreen({super.key});
 
   final _passwordTextController = TextEditingController();
 
@@ -59,9 +59,12 @@ class ConnexionScreen extends StatelessWidget {
                         decoration: const InputDecoration(hintText: 'Password'),
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () => _signIn(context),
-                      child: const Text('Sign in'),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
+                      child: ElevatedButton(
+                        onPressed: () => _signIn(context),
+                        child: const Text('Sign in'),
+                      ),
                     ),
                     BlocBuilder<ConnexionBloc, ConnexionState>(
                       builder: (context, state) {
@@ -84,10 +87,6 @@ class ConnexionScreen extends StatelessWidget {
                           return const SizedBox();
                         }
                       },
-                    ),
-                    TextButton(
-                      onPressed: () => context.go('/sign_up'),
-                      child: const Text('Don\'t have an account? Sign up.'),
                     ),
                   ],
                 ),

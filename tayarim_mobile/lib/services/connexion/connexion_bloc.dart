@@ -1,15 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
 import '../../../models/connexion_user.dart';
-
-
 import '../../../models/user.dart';
 import '../../services/repository/auth/auth_repository.dart';
-
 part 'connexion_event.dart';
-
 part 'connexion_state.dart';
 
 class ConnexionBloc extends Bloc<ConnexionEvent, ConnexionState> {

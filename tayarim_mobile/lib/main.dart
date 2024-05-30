@@ -1,6 +1,5 @@
 import 'package:tayarim_mobile/router/go_router.dart';
 import 'package:tayarim_mobile/services/connexion/connexion_bloc.dart';
-import 'package:tayarim_mobile/services/inscription/inscription_bloc.dart';
 import 'package:tayarim_mobile/services/repository/auth/api_auth_data_source.dart';
 import 'package:tayarim_mobile/services/repository/auth/auth_repository.dart';
 import 'package:flutter/material.dart';
@@ -31,11 +30,6 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<ConnexionBloc>(
             create: (context) => ConnexionBloc(
-              authRepository: context.read<AuthRepository>(),
-            ),
-          ),
-          BlocProvider<InscriptionBloc>(
-            create: (context) => InscriptionBloc(
               authRepository: context.read<AuthRepository>(),
             ),
           ),

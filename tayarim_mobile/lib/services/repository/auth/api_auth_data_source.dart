@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:tayarim_mobile/models/connexion_user.dart';
-import 'package:tayarim_mobile/models/inscription_user.dart';
 import 'package:tayarim_mobile/models/user.dart';
 import 'auth_data_source.dart';
 
@@ -35,18 +34,5 @@ class ApiAuthDataSource extends AuthDataSource {
         }))
         .catchError((error) => throw error.response.data['message']);
     return User.fromJson(response.data);
-  }
-
-  @override
-  Future<String> doInscription(InscriptionUser inscriptionUser) async {
-    Map<String, dynamic> data = {
-      'name': inscriptionUser.name,
-      'email': inscriptionUser.email,
-      'password': inscriptionUser.password,
-    };
-    Response<dynamic> response = await dio
-        .post('/signup', data: data)
-        .catchError((error) => throw error.response.data['message']);
-    return response.data['authToken'];
   }
 }
