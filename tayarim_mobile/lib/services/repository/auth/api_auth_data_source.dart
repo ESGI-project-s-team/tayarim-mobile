@@ -1,38 +1,34 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:tayarim_mobile/models/connexion_user.dart';
 import 'package:tayarim_mobile/models/inscription_user.dart';
 import 'package:tayarim_mobile/models/user.dart';
 import 'auth_data_source.dart';
 
 class ApiAuthDataSource extends AuthDataSource {
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: '${dotenv.env['API_URL']}/auth'
+    ),
+  );
+
   @override
   Future<String> doConnexion(ConnexionUser connexionUser) async {
-    final dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://xoc1-kd2t-7p9b.loc.xano.io/api:xbcc5VEi',
-      ),
-    );
 
     Map<String, dynamic> data = {
       'email': connexionUser.email,
       'password': connexionUser.password,
     };
     Response<dynamic> response = await dio
-        .post('/auth/login', data: data)
+        .post('/login', data: data)
         .catchError((error) => throw error.response.data['message']);
-    return response.data['authToken'];
+    return response.data['token'];
   }
 
   @override
   Future<User> doIsConnected(String token) async {
-    final dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://xoc1-kd2t-7p9b.n7c.xano.io/api:xbcc5VEi',
-      ),
-    );
-
     Response<dynamic> response = await dio
-        .get('/auth/me',
+        .get('/me',
         options: Options(headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer $token",
@@ -43,19 +39,13 @@ class ApiAuthDataSource extends AuthDataSource {
 
   @override
   Future<String> doInscription(InscriptionUser inscriptionUser) async {
-    final dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://xoc1-kd2t-7p9b.n7c.xano.io/api:xbcc5VEi',
-      ),
-    );
-
     Map<String, dynamic> data = {
       'name': inscriptionUser.name,
       'email': inscriptionUser.email,
       'password': inscriptionUser.password,
     };
     Response<dynamic> response = await dio
-        .post('/auth/signup', data: data)
+        .post('/signup', data: data)
         .catchError((error) => throw error.response.data['message']);
     return response.data['authToken'];
   }

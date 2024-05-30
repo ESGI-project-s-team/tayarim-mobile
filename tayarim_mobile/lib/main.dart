@@ -5,8 +5,11 @@ import 'package:tayarim_mobile/services/repository/auth/api_auth_data_source.dar
 import 'package:tayarim_mobile/services/repository/auth/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+
+Future main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
