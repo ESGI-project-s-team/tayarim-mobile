@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../services/connexion/connexion_bloc.dart';
-import '../services/check_connectivity/check_connectivity_bloc.dart';
 
 class ConnexionScreen extends StatelessWidget {
   ConnexionScreen({super.key});
@@ -57,7 +56,19 @@ class ConnexionScreen extends StatelessWidget {
                           return null;
                         },
                         controller: _passwordTextController,
-                        decoration: const InputDecoration(hintText: 'Password'),
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _isPasswordVisible
+                                  ? Icons.visibility_rounded
+                                  : Icons.visibility_off_rounded,
+                            ),
+                            onPressed: () {
+
+                            },
+                          ),
+                        ),
                       ),
                     ),
                     Padding(

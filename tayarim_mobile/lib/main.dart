@@ -1,4 +1,5 @@
 import 'package:tayarim_mobile/router/go_router.dart';
+import 'package:tayarim_mobile/services/check_connectivity/check_connectivity_bloc.dart';
 import 'package:tayarim_mobile/services/connexion/connexion_bloc.dart';
 import 'package:tayarim_mobile/services/repository/auth/api_auth_data_source.dart';
 import 'package:tayarim_mobile/services/repository/auth/auth_repository.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
             create: (context) => ConnexionBloc(
               authRepository: context.read<AuthRepository>(),
             ),
+          ),
+          BlocProvider<CheckConnectivityBloc>(
+            create: (context) => CheckConnectivityBloc(),
           ),
         ],
         child: MaterialApp.router(

@@ -11,9 +11,12 @@ class CheckConnectivityBloc extends Bloc<CheckConnectivityEvent, CheckConnectivi
 
   void _onCheckConnectivity(CheckConnectivity event, Emitter<CheckConnectivityState> emit) async {
     emit(state.copyWith(status: ConnectivityStatus.connected));
+    print("cheking connectivity");
     try {
       ConnectivityResult result = (await Connectivity().checkConnectivity()) as ConnectivityResult;
+      print("toto ne s'affiche pas");
       if (result == ConnectivityResult.none) {
+        print("Not connected");
         emit(state.copyWith(status: ConnectivityStatus.disconnected));
       } else {
         emit(state.copyWith(status: ConnectivityStatus.connected));
