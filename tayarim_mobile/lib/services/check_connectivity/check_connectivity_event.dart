@@ -4,5 +4,5 @@ part of 'check_connectivity_bloc.dart';
 abstract class CheckConnectivityEvent {}
 
 class CheckConnectivity extends CheckConnectivityEvent {
-  CheckConnectivity();
+  CheckConnectivity(BuildContext context);
 }

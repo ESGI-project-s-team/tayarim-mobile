@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../services/connexion/connexion_bloc.dart';
+import '../services/check_connectivity/check_connectivity_bloc.dart';
 
 class ConnexionScreen extends StatelessWidget {
   ConnexionScreen({super.key});

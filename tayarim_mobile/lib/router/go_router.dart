@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../services/connexion/connexion_bloc.dart';
+import '../services/check_connectivity/check_connectivity_bloc.dart';
 
 CustomTransitionPage buildPageWithDefaultTransition<T>({
   required BuildContext context,
@@ -46,19 +47,12 @@ final GoRouter router = GoRouter(
       ),
     ),
 
-    // GoRoute(
-    //   path: '/home',
-    //   pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-    //     context: context,
-    //     state: state,
-    //     child: HomeScreen(),
-    //   ),
-    // ),
-
   ],
   redirect: (context, state) async {
     final connexionBloc = BlocProvider.of<ConnexionBloc>(context);
     connexionBloc.add(IsConnected(context));
+    final checkConnectivityBloc = BlocProvider.of<CheckConnectivityBloc>(context);
+    checkConnectivityBloc.add(CheckConnectivity(context));
     return null;
   },
 );
