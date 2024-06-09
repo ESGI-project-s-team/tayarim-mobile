@@ -58,16 +58,16 @@ class ConnexionScreen extends StatelessWidget {
                         controller: _passwordTextController,
                         decoration: InputDecoration(
                           hintText: 'Password',
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _isPasswordVisible
-                                  ? Icons.visibility_rounded
-                                  : Icons.visibility_off_rounded,
-                            ),
-                            onPressed: () {
-
-                            },
-                          ),
+                          // suffixIcon: IconButton(
+                          //   icon: Icon(
+                          //     _isPasswordVisible
+                          //         ? Icons.visibility_rounded
+                          //         : Icons.visibility_off_rounded,
+                          //   ),
+                          //   onPressed: () {
+                          //
+                          //   },
+                          // ),
                         ),
                       ),
                     ),

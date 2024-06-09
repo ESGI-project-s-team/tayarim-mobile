@@ -1,6 +1,8 @@
+
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 part 'check_connectivity_event.dart';
 part 'check_connectivity_state.dart';
 
@@ -13,15 +15,21 @@ class CheckConnectivityBloc extends Bloc<CheckConnectivityEvent, CheckConnectivi
     emit(state.copyWith(status: ConnectivityStatus.connected));
     print("cheking connectivity");
     try {
-      ConnectivityResult result = (await Connectivity().checkConnectivity()) as ConnectivityResult;
-      print("toto ne s'affiche pas");
-      if (result == ConnectivityResult.none) {
+      state.copyWith(isFinished: false);
+      List<ConnectivityResult> result = await Connectivity().checkConnectivity();
+      print(result);
+
+      if (result.contains(ConnectivityResult.none)) {
         print("Not connected");
+        state.copyWith(isFinished: true);
         emit(state.copyWith(status: ConnectivityStatus.disconnected));
       } else {
+        print("Connected");
+        state.copyWith(isFinished: true);
         emit(state.copyWith(status: ConnectivityStatus.connected));
       }
     } catch (error) {
+      state.copyWith(isFinished: true);
       emit(state.copyWith(status: ConnectivityStatus.disconnected));
     }
   }

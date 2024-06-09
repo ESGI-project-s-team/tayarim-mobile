@@ -8,16 +8,20 @@ enum ConnectivityStatus {
 
 final class CheckConnectivityState {
   final ConnectivityStatus status;
+  final bool isFinished;
 
   CheckConnectivityState({
     this.status = ConnectivityStatus.initial,
+    this.isFinished = false,
   });
 
   CheckConnectivityState copyWith({
     ConnectivityStatus? status,
+    bool? isFinished,
   }) {
     return CheckConnectivityState(
       status: status ?? this.status,
+      isFinished: isFinished ?? this.isFinished,
     );
   }
 }
