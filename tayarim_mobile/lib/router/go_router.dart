@@ -59,15 +59,8 @@ final GoRouter router = GoRouter(
     final connexionBloc = BlocProvider.of<ConnexionBloc>(context);
     connexionBloc.add(IsConnected(context));
     print("before");
-    final checkConnectivityBloc = BlocProvider.of<CheckConnectivityBloc>(context);
-    checkConnectivityBloc.add(CheckConnectivity(context));
-    print("after");
-    final status = context.read<CheckConnectivityBloc>().state.status;
-    print(status);
-    if (status == ConnectivityStatus.disconnected) {
-      print("toto");
-      return '/no_connection';
-    }
+
+
     return null;
   },
 );
