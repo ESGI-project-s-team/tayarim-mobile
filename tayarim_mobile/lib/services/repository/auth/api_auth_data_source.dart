@@ -23,8 +23,8 @@ class ApiAuthDataSource extends AuthDataSource {
       log(error.toString());
       throw error.response.data['message'];
     });
-    log("TOKEN // :  ${response.data['token']}");
-    return response.data['token'];
+    log("TOKEN // :  ${response.data['accessToken']}");
+    return response.data['accessToken'];
   }
 
   @override
