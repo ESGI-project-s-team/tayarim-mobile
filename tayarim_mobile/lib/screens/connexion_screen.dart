@@ -1,10 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:tayarim_mobile/models/connexion_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-
 import '../services/connexion/connexion_bloc.dart';
 
+@RoutePage()
 class ConnexionScreen extends StatelessWidget {
   ConnexionScreen({super.key});
 
@@ -84,7 +84,7 @@ class ConnexionScreen extends StatelessWidget {
                         if (state.status == ConnexionStatus.loading) {
                           return const CircularProgressIndicator();
                         } else if (state.status == ConnexionStatus.success) {
-                          context.go('/home');
+                          context.router.pushNamed('/no_connection'); // MODIFY TO /home
                           return const SizedBox();
                         } else if (state.status == ConnexionStatus.error) {
                           return state.error.toString() != 'null'

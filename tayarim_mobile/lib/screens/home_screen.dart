@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import '../router/app_router.gr.dart';
 import '../services/connexion/connexion_bloc.dart';
 
+@RoutePage()
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
@@ -26,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               } else {
                 return IconButton(
                   icon: const Icon(Icons.power),
-                  onPressed: (() => context.go('/sign_in')),
+                  onPressed: (() => context.router.pushNamed('/home')), // MODIFY
                 );
               }
             },

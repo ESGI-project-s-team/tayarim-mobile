@@ -2,7 +2,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:go_router/go_router.dart';
 part 'check_connectivity_event.dart';
 part 'check_connectivity_state.dart';
 
