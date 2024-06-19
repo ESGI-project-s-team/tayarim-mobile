@@ -11,8 +11,7 @@ class AuthGuard extends AutoRouteGuard {
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final CheckConnectivityState state = BlocProvider.of<CheckConnectivityBloc>(context).state;
-    const bool authenticated = false;
+    final CheckConnectivityState state = BlocProvider.of<CheckConnectivityBloc>(context).;
 
     if (state.status == ConnectivityStatus.connected) {
       resolver.next(true);

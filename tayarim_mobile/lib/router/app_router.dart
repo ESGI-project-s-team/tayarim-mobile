@@ -12,6 +12,7 @@ class AppRouter extends $AppRouter {
 
   AppRouter({required this.context});
 
+
   @override
   List<AutoRoute> get routes => [
     /// routes go here
@@ -30,7 +31,6 @@ class AppRouter extends $AppRouter {
         ],
         page: HomeRoute.page,
         path: '/home',
-        transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
     AutoRoute(page: NoConnectionDialog.page, path: '/no_connection'),
   ];

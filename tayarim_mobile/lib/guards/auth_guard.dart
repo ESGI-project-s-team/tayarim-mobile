@@ -15,6 +15,7 @@ class AuthGuard extends AutoRouteGuard {
     const bool authenticated = false;
 
     if (state.status == ConnexionStatus.success) {
+
       resolver.next(true);
     } else {
       // we redirect the user to our login page
