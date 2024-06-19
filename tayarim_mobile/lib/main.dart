@@ -13,15 +13,20 @@ Future main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  final appRouter = AppRouter();
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final appRouter = AppRouter(context: context);
+
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthRepository>(
@@ -45,7 +50,7 @@ class MyApp extends StatelessWidget {
           title: 'tayarim_mobile',
           debugShowCheckedModeBanner: false,
           routerConfig: appRouter.config(
-            reevaluateListenable: authChangeNotifier,
+            // reevaluateListenable: authChangeNotifier,
           ), // MODIFY
           theme: ThemeData(
             useMaterial3: true,
