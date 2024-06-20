@@ -24,7 +24,6 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final appRouter = AppRouter(context: context);
 
     return MultiRepositoryProvider(
       providers: [
@@ -45,21 +44,24 @@ class _MyAppState extends State<MyApp> {
             create: (context) => CheckConnectivityBloc(),
           ),
         ],
-        child: MaterialApp.router(
-          title: 'tayarim_mobile',
-          debugShowCheckedModeBanner: false,
-          routerConfig: appRouter.config(
-            // reevaluateListenable: authChangeNotifier,
-          ), // MODIFY
-          theme: ThemeData(
-            useMaterial3: true,
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color(0xff1c2434),
-              surface: const Color(0xfff1f5f9),
-              primary: Colors.black,
-            ),
-            fontFamily: 'Sans Serif',
-          ),
+        child: Builder(
+          builder: (context) {
+            final appRouter = AppRouter(context: context);
+            return MaterialApp.router(
+              title: 'tayarim_mobile',
+              debugShowCheckedModeBanner: false,
+              routerConfig: appRouter.config(), // MODIFY
+              theme: ThemeData(
+                useMaterial3: true,
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: const Color(0xff1c2434),
+                  surface: const Color(0xfff1f5f9),
+                  primary: Colors.black,
+                ),
+                fontFamily: 'Sans Serif',
+              ),
+            );
+          }
         ),
       ),
     );

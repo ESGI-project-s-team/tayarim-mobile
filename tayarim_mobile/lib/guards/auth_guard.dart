@@ -5,16 +5,20 @@ import 'package:tayarim_mobile/router/app_router.gr.dart';
 import 'package:tayarim_mobile/services/connexion/connexion_bloc.dart';
 
 class AuthGuard extends AutoRouteGuard {
-  final BuildContext context;
 
+  final BuildContext context;
   AuthGuard({required this.context});
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final ConnexionState state = BlocProvider.of<ConnexionBloc>(context).state;
+    final connexionBloc = BlocProvider.of<ConnexionBloc>(context);
     const bool authenticated = false;
-
-    if (state.status == ConnexionStatus.success) {
+    print('AuthGuard: STARTED');
+    print(connexionBloc.state.status);
+    connexionBloc.add(IsConnected(context));
+    print(connexionBloc.state.status);
+    print('AuthGuard: EN COURS');
+    if (connexionBloc.state == ConnexionStatus.success) {
 
       resolver.next(true);
     } else {
