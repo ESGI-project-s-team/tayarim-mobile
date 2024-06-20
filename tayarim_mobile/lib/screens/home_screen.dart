@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: const Text('Flitter'),
+        title: const Text('Mes logements'),
         centerTitle: true,
         actions: [
           BlocBuilder<ConnexionBloc, ConnexionState>(
@@ -35,44 +35,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      // body: const PostListScreen(),
-      // floatingActionButton: Padding(
-      //   padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
-      //   child: FloatingActionButton(
-      //     heroTag: 'addPost',
-      //     onPressed: () {
-      //       showModalBottomSheet(
-      //           isScrollControlled: true,
-      //           context: context,
-      //           builder: (BuildContext context) {
-      //             return BlocBuilder<PostBloc, PostState>(
-      //               builder: (context, state) {
-      //                 return FloatingActionButtonScreen(
-      //                   onPressed: () {
-      //                     if (formKey.currentState!.validate()) {
-      //                       BlocProvider.of<PostBloc>(context).add(
-      //                         PostSubmitted(
-      //                           WritePost(
-      //                             content: textFieldController.text,
-      //                             imageBase64: state.imageBase64,
-      //                           ),
-      //                         ),
-      //                       );
-      //                     }
-      //                   },
-      //                   url: null,
-      //                   content: null,
-      //                   imagePicker: true,
-      //                 );
-      //               },
-      //             );
-      //           });
-      //     },
-      //     backgroundColor: Colors.blue,
-      //     child: const Icon(Icons.add),
-      //   ),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+
     );
   }
 
