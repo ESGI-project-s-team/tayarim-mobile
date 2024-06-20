@@ -19,16 +19,10 @@ class ApiAuthDataSource extends AuthDataSource {
       'motDePasse': connexionUser.password,
     };
     Response<dynamic> response =
-        await dio.post('/login', data: data).catchError((error) {
+        await dio.post('/login', data: data).catchError((error) async {
       log(error.toString());
-      print("ERROR");
-      print(error.response.data["errors"][0]);
-      var errorMessages = [];
-      for (var i = 0; i < error.response.data["errors"].length; i++) {
-        errorMessages.add(DicoLoader().getErrorMessage(error.response.data["errors"][i]));
-      }
-      print(errorMessages);
-      throw errorMessages;
+      var errorMessage = await DicoLoader().getErrorMessage(error.response.data["errors"][0]);
+      throw errorMessage;
     });
     log("TOKEN // :  ${response.data['accessToken']}");
     return response.data['accessToken'];
