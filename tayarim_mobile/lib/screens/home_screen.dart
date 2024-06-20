@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tayarim_mobile/utils/card.dart';
 import '../router/app_router.gr.dart';
 import '../services/connexion/connexion_bloc.dart';
 
@@ -14,6 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+      body: const HouseCard(),
       appBar: AppBar(
         title: const Text('Mes logements'),
         centerTitle: true,
@@ -35,7 +37,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-
     );
   }
 
