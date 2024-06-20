@@ -56,17 +56,17 @@ class ConnexionScreen extends StatelessWidget {
                           return null;
                         },
                         controller: _passwordTextController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: 'Password',
                           // suffixIcon: IconButton(
                           //   icon: Icon(
-                          //     _isPasswordVisible
-                          //         ? Icons.visibility_rounded
-                          //         : Icons.visibility_off_rounded,
-                          //   ),
-                          //   onPressed: () {
-                          //
-                          //   },
+                          //   //   _isPasswordVisible
+                          //   //       ? Icons.visibility_rounded
+                          //   //       : Icons.visibility_off_rounded,
+                          //   // ),
+                          //   // onPressed: () {
+                          //   //
+                          //   // },
                           // ),
                         ),
                       ),
@@ -84,7 +84,7 @@ class ConnexionScreen extends StatelessWidget {
                         if (state.status == ConnexionStatus.loading) {
                           return const CircularProgressIndicator();
                         } else if (state.status == ConnexionStatus.success) {
-                          context.router.pushNamed('/no_connection'); // MODIFY TO /home
+                          context.router.pushNamed('/home');
                           return const SizedBox();
                         } else if (state.status == ConnexionStatus.error) {
                           return state.error.toString() != 'null'

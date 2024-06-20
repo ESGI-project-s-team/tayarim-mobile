@@ -15,10 +15,11 @@ class AuthGuard extends AutoRouteGuard {
     const bool authenticated = false;
     print('AuthGuard: STARTED');
     print(connexionBloc.state.status);
+
     connexionBloc.add(IsConnected(context));
-    print(connexionBloc.state.status);
     print('AuthGuard: EN COURS');
-    if (connexionBloc.state == ConnexionStatus.success) {
+
+    if (connexionBloc.state.status == ConnexionStatus.success) {
 
       resolver.next(true);
     } else {
