@@ -1,24 +1,24 @@
-import 'package:flutter/cupertino.dart';
-
 class Notification {
-  int id;
-  String title;
-  String description;
-  String createdAt;
+  final int? id;
+  final DateTime? date;
+  final String? message;
+  final String? type;
+  final bool? read;
 
-  Notification({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.createdAt,
+  const Notification({
+    this.id,
+    this.date,
+    this.message,
+    this.type,
+    this.read,
   });
 
   factory Notification.fromJson(Map<String, dynamic> json) {
     return Notification(
       id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      createdAt: json['created_at'],
+      date: json['date'],
+      message: json['message'],
+      type: json['type'],
     );
   }
 }

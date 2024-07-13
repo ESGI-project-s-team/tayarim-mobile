@@ -15,9 +15,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      body: const HouseCard(),
+      body: const NotificationCard(),
       appBar: AppBar(
-        title: const Text('Mes logements'),
+        title: const Text('Mes notifications'),
         centerTitle: true,
         actions: [
           BlocBuilder<ConnexionBloc, ConnexionState>(

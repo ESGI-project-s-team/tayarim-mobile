@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HouseCard extends StatelessWidget {
+class NotificationCard extends StatelessWidget {
 
-  const HouseCard({super.key});
+  const NotificationCard({super.key});
 
 
   @override

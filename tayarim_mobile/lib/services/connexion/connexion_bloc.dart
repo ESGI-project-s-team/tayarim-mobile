@@ -27,7 +27,7 @@ class ConnexionBloc extends Bloc<ConnexionEvent, ConnexionState> {
           password: event.connexionUser.password));
 
       await _storage.write(
-        key: 'authToken',
+        key: 'accessToken',
         value: token,
       );
       emit(state.copyWith(

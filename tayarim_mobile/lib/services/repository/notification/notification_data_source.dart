@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import '../../../models/notification.dart';
 
 abstract class NotificationDataSource {
-  Future<List<Notification>> getNotifications(String token);
+  Future<List<Notification>> getNotifications();
 }

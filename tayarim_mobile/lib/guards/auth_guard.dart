@@ -23,6 +23,7 @@ class AuthGuard extends AutoRouteGuard {
 
       resolver.next(true);
     } else {
+      print('AuthGuard: redirecting to login page');
       // we redirect the user to our login page
       router.push(ConnexionRoute());
     }
