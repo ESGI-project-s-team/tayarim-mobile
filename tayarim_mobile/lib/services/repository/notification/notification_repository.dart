@@ -6,7 +6,7 @@ class NotificationRepository {
 
   NotificationRepository({required this.notificationDataSource});
 
-  Future<List<Notification>> getNotifications(Notification notification) async {
+  Future<List<Notification>> getNotifications() async {
     return notificationDataSource.getNotifications();
   }
 }

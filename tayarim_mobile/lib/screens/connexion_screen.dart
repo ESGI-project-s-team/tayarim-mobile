@@ -81,9 +81,10 @@ class ConnexionScreen extends StatelessWidget {
                     BlocBuilder<ConnexionBloc, ConnexionState>(
                       builder: (context, state) {
                         // Handle different states here
-                        if (state.status == ConnexionStatus.loading) {
-                          return const CircularProgressIndicator();
-                        } else if (state.status == ConnexionStatus.success) {
+                        // if (state.status == ConnexionStatus.loading && ) {
+                        //   return const CircularProgressIndicator();
+                        // } else
+                        if (state.status == ConnexionStatus.success) {
                           context.router.pushNamed('/home');
                           return const SizedBox();
                         } else if (state.status == ConnexionStatus.error) {
@@ -115,6 +116,9 @@ class ConnexionScreen extends StatelessWidget {
       final String email = _emailTextController.text;
       final String password = _passwordTextController.text;
       final connexionBloc = BlocProvider.of<ConnexionBloc>(context);
+      print('ConnexionScreen: _signIn');
+      print('email: $email');
+      print('password: $password');
       connexionBloc.add(
           ConnexionSubmitted(ConnexionUser(email: email, password: password)));
     }
