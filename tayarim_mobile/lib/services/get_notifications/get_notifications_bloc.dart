@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-
 import '../../models/notification.dart';
 import '../repository/notification/notification_repository.dart';
-
 part 'get_notifications_event.dart';
 part 'get_notifications_state.dart';
 

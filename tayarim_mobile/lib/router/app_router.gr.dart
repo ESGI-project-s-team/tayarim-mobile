@@ -12,8 +12,6 @@ import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/material.dart' as _i5;
 import 'package:tayarim_mobile/screens/connexion_screen.dart' as _i1;
 import 'package:tayarim_mobile/screens/home_screen.dart' as _i2;
-import 'package:tayarim_mobile/services/repository/notification/notification_repository.dart'
-    as _i6;
 import 'package:tayarim_mobile/utils/no_connection_dialog.dart' as _i3;
 
 abstract class $AppRouter extends _i4.RootStackRouter {
@@ -30,13 +28,11 @@ abstract class $AppRouter extends _i4.RootStackRouter {
       );
     },
     HomeRoute.name: (routeData) {
-      final args = routeData.argsAs<HomeRouteArgs>();
+      final args =
+          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
       return _i4.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i2.HomeScreen(
-          key: args.key,
-          notificationRepository: args.notificationRepository,
-        ),
+        child: _i2.HomeScreen(key: args.key),
       );
     },
     NoConnectionDialog.name: (routeData) {
@@ -82,14 +78,10 @@ class ConnexionRouteArgs {
 class HomeRoute extends _i4.PageRouteInfo<HomeRouteArgs> {
   HomeRoute({
     _i5.Key? key,
-    required _i6.NotificationRepository notificationRepository,
     List<_i4.PageRouteInfo>? children,
   }) : super(
           HomeRoute.name,
-          args: HomeRouteArgs(
-            key: key,
-            notificationRepository: notificationRepository,
-          ),
+          args: HomeRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -100,18 +92,13 @@ class HomeRoute extends _i4.PageRouteInfo<HomeRouteArgs> {
 }
 
 class HomeRouteArgs {
-  const HomeRouteArgs({
-    this.key,
-    required this.notificationRepository,
-  });
+  const HomeRouteArgs({this.key});
 
   final _i5.Key? key;
 
-  final _i6.NotificationRepository notificationRepository;
-
   @override
   String toString() {
-    return 'HomeRouteArgs{key: $key, notificationRepository: $notificationRepository}';
+    return 'HomeRouteArgs{key: $key}';
   }
 }
 

@@ -8,7 +8,7 @@ import 'notification_data_source.dart';
 class ApiNotificationDataSource extends NotificationDataSource {
   final _storage = const FlutterSecureStorage();
   final dio = Dio(
-    BaseOptions(baseUrl: '${dotenv.env['API_URL']}/auth'),
+    BaseOptions(baseUrl: '${dotenv.env['API_URL']}'),
   );
 
   @override
@@ -17,11 +17,16 @@ class ApiNotificationDataSource extends NotificationDataSource {
 
     dio.options.headers['Authorization'] = 'Bearer $accessToken';
     Response<dynamic> response =
-      await dio.post('/notifications').catchError((error) {
+      await dio.get('/notifications').catchError((error) {
       log(error.toString());
       throw error.response.data['message'];
     });
-    List<Notification> notifications = response.data.map((x) => Notification.fromJson(x)).toList();
-    return notifications;
+    if (response.data is List) {
+      List<dynamic> data = response.data;
+      List<Notification> notifications = data.map((x) => Notification.fromJson(x)).toList();
+      return notifications.reversed.toList();
+    } else {
+      throw response.data['message'];
+    }
   }
 }

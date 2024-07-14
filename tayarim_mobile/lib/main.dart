@@ -1,15 +1,17 @@
 import 'package:tayarim_mobile/router/app_router.dart';
 import 'package:tayarim_mobile/services/check_connectivity/check_connectivity_bloc.dart';
 import 'package:tayarim_mobile/services/connexion/connexion_bloc.dart';
+import 'package:tayarim_mobile/services/get_notifications/get_notifications_bloc.dart';
 import 'package:tayarim_mobile/services/repository/auth/api_auth_data_source.dart';
 import 'package:tayarim_mobile/services/repository/auth/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:tayarim_mobile/utils/dico_loader.dart';
+import 'package:tayarim_mobile/services/repository/notification/api_notification_data_source.dart';
+import 'package:tayarim_mobile/services/repository/notification/notification_repository.dart';
 
 Future main() async {
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "assets/.env");
   runApp(const MyApp());
 }
 
@@ -33,6 +35,11 @@ class _MyAppState extends State<MyApp> {
             authDataSource: ApiAuthDataSource(),
           ),
         ),
+        RepositoryProvider<NotificationRepository>(
+            create: (context) => NotificationRepository(
+              notificationDataSource: ApiNotificationDataSource(),
+            )
+        )
       ],
       child: MultiBlocProvider(
         providers: [
@@ -43,6 +50,11 @@ class _MyAppState extends State<MyApp> {
           ),
           BlocProvider<CheckConnectivityBloc>(
             create: (context) => CheckConnectivityBloc(),
+          ),
+          BlocProvider<GetNotificationsBloc>(
+            create: (context) => GetNotificationsBloc(
+              notificationRepository: context.read<NotificationRepository>(),
+            ),
           ),
         ],
         child: Builder(

@@ -9,11 +9,9 @@ import '../services/get_notifications/get_notifications_bloc.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key, required this.notificationRepository});
+  HomeScreen({super.key});
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final NotificationRepository notificationRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +42,7 @@ class HomeScreen extends StatelessWidget {
         builder: (context, state) {
           switch (state.status) {
             case GetNotificationsStatus.initial:
+              _getNotifications(context);
               return const SizedBox();
             case GetNotificationsStatus.loading:
               return const Center(
@@ -78,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                             color: Colors.grey.shade300,
                           ),
                           itemBuilder: (context, index) {
-                            return NotificationCard();
+                            return NotificationCard(notification: state.notifications![index]);
                           }
                         ),
                       ),
@@ -92,6 +91,12 @@ class HomeScreen extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void _getNotifications(BuildContext context) {
+    print("DEDANS");
+    final getNotificationsBloc = BlocProvider.of<GetNotificationsBloc>(context);
+    getNotificationsBloc.add(GetNotifications(refresh: true));
   }
 
   void _signOut(BuildContext context) {
