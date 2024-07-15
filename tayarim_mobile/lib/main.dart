@@ -1,3 +1,4 @@
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:tayarim_mobile/router/app_router.dart';
 import 'package:tayarim_mobile/services/check_connectivity/check_connectivity_bloc.dart';
 import 'package:tayarim_mobile/services/connexion/connexion_bloc.dart';
@@ -27,7 +28,7 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
+    initializeDateFormatting('fr_FR', null);
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthRepository>(

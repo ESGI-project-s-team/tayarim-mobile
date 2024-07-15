@@ -1,4 +1,4 @@
-import 'package:tayarim_mobile/models/notification.dart';
+import 'notification.dart';
 
 class NotificationDepense extends Notification{
   final String logementTitre;
@@ -20,7 +20,7 @@ class NotificationDepense extends Notification{
     required super.type,
   });
 
-  factory NotificationDepense.fromMessage(Notification notification) {
+  factory NotificationDepense.fromNotification(Notification notification) {
     List<String> elements = notification.message.split(';');
     String logementTitre = elements[0];
     String logementAdresse = elements[1];

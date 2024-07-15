@@ -12,19 +12,12 @@ class AuthGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
     final connexionBloc = BlocProvider.of<ConnexionBloc>(context);
-    const bool authenticated = false;
-    print('AuthGuard: STARTED');
-    print(connexionBloc.state.status);
 
     connexionBloc.add(IsConnected(context));
-    print('AuthGuard: EN COURS');
 
     if (connexionBloc.state.status == ConnexionStatus.success) {
-
       resolver.next(true);
     } else {
-      print('AuthGuard: redirecting to login page');
-      // we redirect the user to our login page
       router.push(ConnexionRoute());
     }
   }

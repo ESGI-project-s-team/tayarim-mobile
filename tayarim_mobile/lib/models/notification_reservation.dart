@@ -9,7 +9,7 @@ class NotificationReservation extends Notification{
   final String urlImage;
   final String dateArrivee;
   final String dateDepart;
-  final Int nbPersonnes;
+  final String nbPersonnes;
 
   const NotificationReservation({
     required this.titre,
@@ -32,7 +32,7 @@ class NotificationReservation extends Notification{
     String urlImage = elements[3];
     String dateArrivee = elements[4];
     String dateDepart = elements[5];
-    Int nbPersonnes = elements[6] as Int;
+    String nbPersonnes = elements[6];
     String date = notification.date;
     String message = notification.message;
     String type = notification.type;
