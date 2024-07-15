@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../models/notification_reservation.dart';
+import 'date_formatter.dart';
 
 class NotificationReservationWidget extends StatelessWidget {
   const NotificationReservationWidget({super.key, required this.content});
 
   final NotificationReservation content;
-
-  String formatDate(String dateString) {
-    DateTime date = DateTime.parse(dateString);
-    return DateFormat('dd MMMM yyyy', 'fr_FR').format(date);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +26,7 @@ class NotificationReservationWidget extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 14,
                 ),
-                formatDate(content.date)
+                DateFormatter.formatDate(content.date)
             ),
           ],
         ),
@@ -64,7 +59,7 @@ class NotificationReservationWidget extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 14,
                 ),
-                "Du ${formatDate(content.dateArrivee)}, au ${formatDate(content.dateDepart)}",
+                "Du ${DateFormatter.formatDate(content.dateArrivee)}, au ${DateFormatter.formatDate(content.dateDepart)}",
               ),
             ]
           ),

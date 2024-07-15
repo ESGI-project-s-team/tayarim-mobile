@@ -24,11 +24,11 @@ class NotificationCard extends StatelessWidget {
         NotificationReservation content = NotificationReservation.fromNotification(notification);
         return NotificationReservationWidget(content: content);
       case 'Depense':
-        // NotificationDepense content = NotificationDepense.fromNotification(notification);
-        // return NotificationDepenseWidget(content: content);
+        NotificationDepense content = NotificationDepense.fromNotification(notification);
+        return NotificationDepenseWidget(content: content);
       case 'facture':
-        // NotificationFacture content = NotificationFacture.fromNotification(notification);
-        // return NotificationFactureWidget(content: content);
+        NotificationFacture content = NotificationFacture.fromNotification(notification);
+        return NotificationFactureWidget(content: content);
       default:
         return Text(notification.type); // En cas de type inconnu, on retourne le message par défaut
     }
