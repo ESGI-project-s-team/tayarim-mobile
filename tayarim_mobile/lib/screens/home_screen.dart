@@ -15,20 +15,30 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF1c2434),
         automaticallyImplyLeading: false,
-        title: const Text('Mes notifications'),
+        title: const Text(
+            style: TextStyle(color: Colors.white),
+            'Mes notifications'
+        ),
         centerTitle: true,
         actions: [
           BlocBuilder<ConnexionBloc, ConnexionState>(
             builder: (context, state) {
               if (state.user != null) {
                 return IconButton(
-                  icon: const Icon(Icons.power_settings_new),
+                  icon: const Icon(
+                      color: Colors.white,
+                      Icons.power_settings_new
+                  ),
                   onPressed: (() => _signOut(context)),
                 );
               } else {
                 return IconButton(
-                  icon: const Icon(Icons.power_settings_new),
+                  icon: const Icon(
+                      color: Colors.white,
+                      Icons.power_settings_new
+                  ),
                   onPressed: (() =>
                       context.router.pushNamed('/home')), // MODIFY
                 );

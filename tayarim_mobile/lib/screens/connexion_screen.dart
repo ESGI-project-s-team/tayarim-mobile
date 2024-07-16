@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:tayarim_mobile/models/connexion_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tayarim_mobile/utils/translation_loader.dart';
 import '../services/connexion/connexion_bloc.dart';
+
 
 @RoutePage()
 class ConnexionScreen extends StatelessWidget {
@@ -13,6 +15,8 @@ class ConnexionScreen extends StatelessWidget {
   final _emailTextController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  final TranslationLoader i18n = TranslationLoader();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class ConnexionScreen extends StatelessWidget {
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
+                            return 'Entrez votre email';
                           }
                           return null;
                         },
@@ -51,21 +55,29 @@ class ConnexionScreen extends StatelessWidget {
                         obscureText: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
+                            return 'Entrez votre de mot de passe';
                           }
                           return null;
                         },
                         controller: _passwordTextController,
                         decoration: const InputDecoration(
-                          hintText: 'Password',
+                          hintText: 'Mot de passe',
                         ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
                       child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.all<Color>(const Color(0xFF1c2434)),
+                        ),
                         onPressed: () => _signIn(context),
-                        child: const Text('Sign in'),
+                        child: Text(
+                          style: const TextStyle(
+                            color: Colors.white
+                          ),
+                          i18n.getTranslation("sign_in"),
+                        ),
                       ),
                     ),
                     BlocBuilder<ConnexionBloc, ConnexionState>(
