@@ -72,11 +72,11 @@ class ConnexionScreen extends StatelessWidget {
                           backgroundColor: WidgetStateProperty.all<Color>(const Color(0xFF1c2434)),
                         ),
                         onPressed: () => _signIn(context),
-                        child: Text(
-                          style: const TextStyle(
+                        child: const Text(
+                          style: TextStyle(
                             color: Colors.white
                           ),
-                          i18n.getTranslation("sign_in"),
+                          "Connexion", // i18n.getTranslation('connexion')
                         ),
                       ),
                     ),

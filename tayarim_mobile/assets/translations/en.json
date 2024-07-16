@@ -1,0 +1,15 @@
+{
+  "password": "Password",
+  "sign_in": "Sign in",
+  "home_title": "Notifications",
+  "new_reservation": "New reservation",
+  "new_expense": "New expense",
+  "new_unavailable": "New unavailable period",
+  "new_invoice": "New invoice",
+  "house": "House",
+  "label": "Label",
+  "price": "Price",
+  "amount": "Amount",
+  "from": "From",
+  "to": "to"
+}
