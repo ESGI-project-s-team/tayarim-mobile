@@ -11,6 +11,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:tayarim_mobile/services/repository/notification/api_notification_data_source.dart';
 import 'package:tayarim_mobile/services/repository/notification/notification_repository.dart';
 import 'package:tayarim_mobile/utils/translation_loader.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 Future main() async {
   await dotenv.load(fileName: "assets/.env");
