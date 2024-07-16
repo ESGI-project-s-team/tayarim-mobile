@@ -16,9 +16,6 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> get routes => [
     /// routes go here
     CustomRoute(
-        // guards: [
-        //   ConnectivityGuard(context: context),
-        // ],
         page: ConnexionRoute.page,
         path: '/connexion',
       transitionsBuilder: TransitionsBuilders.fadeIn,
@@ -26,7 +23,6 @@ class AppRouter extends $AppRouter {
     CustomRoute(
         guards: [
           AuthGuard(context: context),
-          // ConnectivityGuard(context:context),
         ],
         page: HomeRoute.page,
         path: '/home',
@@ -35,60 +31,3 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: NoConnectionDialog.page, path: '/no_connection'),
   ];
 }
-
-// CustomTransitionPage buildPageWithDefaultTransition<T>({
-//   required BuildContext context,
-//   required GoRouterState state,
-//   required Widget child,
-// }) {
-//   return CustomTransitionPage<T>(
-//     key: state.pageKey,
-//     child: child,
-//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-//       const begin = Offset(0.0, 1.0);
-//       const end = Offset.zero;
-//       const curve = Curves.ease;
-//
-//       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-//
-//       return SlideTransition(
-//         position: animation.drive(tween),
-//         child: child,
-//       );
-//     },
-//   );
-// }
-
-// final GoRouter router = GoRouter(
-//   routes: <RouteBase>[
-//     GoRoute(
-//       path: '/',
-//       pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-//         context: context,
-//         state: state,
-//         child: ConnexionScreen(),
-//       ),
-//     ),
-//     GoRoute(
-//       path: '/sign_in',
-//       pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-//         context: context,
-//         state: state,
-//         child: ConnexionScreen(),
-//       ),
-//     ),
-//     GoRoute(path: '/no_connection', pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-//       context: context,
-//       state: state,
-//       child: const NoConnectionDialog(),
-//     )),
-//   ],
-//   redirect: (context, state) async {
-//     final connexionBloc = BlocProvider.of<ConnexionBloc>(context);
-//     connexionBloc.add(IsConnected(context));
-//     print("before");
-//
-//
-//     return null;
-//   },
-// );

@@ -58,16 +58,6 @@ class ConnexionScreen extends StatelessWidget {
                         controller: _passwordTextController,
                         decoration: const InputDecoration(
                           hintText: 'Password',
-                          // suffixIcon: IconButton(
-                          //   icon: Icon(
-                          //   //   _isPasswordVisible
-                          //   //       ? Icons.visibility_rounded
-                          //   //       : Icons.visibility_off_rounded,
-                          //   // ),
-                          //   // onPressed: () {
-                          //   //
-                          //   // },
-                          // ),
                         ),
                       ),
                     ),
@@ -80,10 +70,6 @@ class ConnexionScreen extends StatelessWidget {
                     ),
                     BlocBuilder<ConnexionBloc, ConnexionState>(
                       builder: (context, state) {
-                        // Handle different states here
-                        // if (state.status == ConnexionStatus.loading && ) {
-                        //   return const CircularProgressIndicator();
-                        // } else
                         if (state.status == ConnexionStatus.success) {
                           context.router.pushNamed('/home');
                           return const SizedBox();
@@ -116,9 +102,6 @@ class ConnexionScreen extends StatelessWidget {
       final String email = _emailTextController.text;
       final String password = _passwordTextController.text;
       final connexionBloc = BlocProvider.of<ConnexionBloc>(context);
-      print('ConnexionScreen: _signIn');
-      print('email: $email');
-      print('password: $password');
       connexionBloc.add(
           ConnexionSubmitted(ConnexionUser(email: email, password: password)));
     }
