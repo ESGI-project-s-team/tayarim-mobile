@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:tayarim_mobile/utils/translation_loader.dart';
 import '../models/notification_indisponibilite.dart';
 import 'date_formatter.dart';
 
 class NotificationIndisponibiliteWidget extends StatelessWidget {
-  const NotificationIndisponibiliteWidget({super.key, required this.content});
+  NotificationIndisponibiliteWidget({super.key, required this.content});
 
   final NotificationIndisponibilite content;
+
+  final i18n = TranslationLoader();
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +16,12 @@ class NotificationIndisponibiliteWidget extends StatelessWidget {
       title: Column(children: [
         Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
-                "Nouvelle indisponibilité",
+                i18n.getTranslation('new_unavailable'),
               ),
             ),
             Text(
@@ -36,7 +39,7 @@ class NotificationIndisponibiliteWidget extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 14,
               ),
-              "Appartement : ${content.titre}",
+              "${i18n.getTranslation('new_unavailable')} : ${content.titre}",
             ),
           ],
         ),
@@ -59,7 +62,7 @@ class NotificationIndisponibiliteWidget extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 14,
                     ),
-                    "Du ${DateFormatter.formatDate(content.dateDebut)}, au ${DateFormatter.formatDate(content.dateFin)}",
+                    "${i18n.getTranslation('from')} ${DateFormatter.formatDate(content.dateDebut)}, ${i18n.getTranslation('to')} ${DateFormatter.formatDate(content.dateFin)}",
                   ),
                 ]
             ),

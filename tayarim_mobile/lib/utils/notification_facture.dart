@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import '../models/notification_facture.dart';
+import 'package:tayarim_mobile/utils/translation_loader.dart';
 import 'date_formatter.dart';
 
 class NotificationFactureWidget extends StatelessWidget {
-  const NotificationFactureWidget({super.key, required this.content});
+  NotificationFactureWidget({super.key, required this.content});
   final NotificationFacture content;
+
+  final i18n = TranslationLoader();
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +15,12 @@ class NotificationFactureWidget extends StatelessWidget {
       title: Column(children: [
         Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
-                "Nouvelle facture disponible",
+                i18n.getTranslation('new_invoice'),
               ),
             ),
             Text(
@@ -48,7 +51,7 @@ class NotificationFactureWidget extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 14,
                   ),
-                  "Montant : ${content.montant} €",
+                  "${i18n.getTranslation('amount')} : ${content.montant} €",
                 ),
               ]
             ),

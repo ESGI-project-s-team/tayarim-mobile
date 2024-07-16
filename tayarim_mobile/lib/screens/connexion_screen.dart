@@ -16,7 +16,7 @@ class ConnexionScreen extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
 
-  final TranslationLoader i18n = TranslationLoader();
+  final i18n = TranslationLoader();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class ConnexionScreen extends StatelessWidget {
                       child: TextFormField(
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Entrez votre email';
+                            return i18n.getTranslation('sign_in_hint');
                           }
                           return null;
                         },
@@ -55,13 +55,13 @@ class ConnexionScreen extends StatelessWidget {
                         obscureText: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Entrez votre de mot de passe';
+                            return i18n.getTranslation('password_hint');
                           }
                           return null;
                         },
                         controller: _passwordTextController,
-                        decoration: const InputDecoration(
-                          hintText: 'Mot de passe',
+                        decoration: InputDecoration(
+                          hintText: i18n.getTranslation('password'),
                         ),
                       ),
                     ),
@@ -72,11 +72,11 @@ class ConnexionScreen extends StatelessWidget {
                           backgroundColor: WidgetStateProperty.all<Color>(const Color(0xFF1c2434)),
                         ),
                         onPressed: () => _signIn(context),
-                        child: const Text(
-                          style: TextStyle(
+                        child: Text(
+                          style: const TextStyle(
                             color: Colors.white
                           ),
-                          "Connexion", // i18n.getTranslation('connexion')
+                          i18n.getTranslation('sign_in'),
                         ),
                       ),
                     ),

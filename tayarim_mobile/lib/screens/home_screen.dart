@@ -4,12 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tayarim_mobile/utils/card.dart';
 import '../services/connexion/connexion_bloc.dart';
 import '../services/get_notifications/get_notifications_bloc.dart';
+import '../utils/translation_loader.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final i18n = TranslationLoader();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: const Text(
             style: TextStyle(color: Colors.white),
-            'Mes notifications'
+            'Notifications'
         ),
         centerTitle: true,
         actions: [
@@ -64,8 +67,8 @@ class HomeScreen extends StatelessWidget {
             case GetNotificationsStatus.success:
               if (state.notifications != null) {
                 if (state.notifications!.isEmpty) {
-                  return const Center(
-                    child: Text('Pas de commentaire ...'),
+                  return Center(
+                    child: Text(i18n.getTranslation('no_notification')),
                   );
                 } else {
                   return RefreshIndicator(

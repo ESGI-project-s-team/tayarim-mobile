@@ -1,7 +1,8 @@
 {
   "password": "Password",
   "sign_in": "Sign in",
-  "home_title": "Notifications",
+  "sign_in_hint": "Enter your email",
+  "password_hint": "Enter your password",
   "new_reservation": "New reservation",
   "new_expense": "New expense",
   "new_unavailable": "New unavailable period",
@@ -11,5 +12,8 @@
   "price": "Price",
   "amount": "Amount",
   "from": "From",
-  "to": "to"
+  "to": "to",
+  "traveler": "Traveler",
+  "travelers": "Travelers",
+  "no_notification": "No notifications"
 }

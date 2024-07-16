@@ -10,9 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:tayarim_mobile/services/repository/notification/api_notification_data_source.dart';
 import 'package:tayarim_mobile/services/repository/notification/notification_repository.dart';
+import 'package:tayarim_mobile/utils/translation_loader.dart';
 
 Future main() async {
   await dotenv.load(fileName: "assets/.env");
+  await TranslationLoader().loadTranslations();
   runApp(const MyApp());
 }
 

@@ -1,7 +1,8 @@
 {
   "password": "Mot de passe",
   "sign_in": "Connexion",
-  "home_title": "Notifications",
+  "sign_in_hint": "Entrez votre email",
+  "password_hint": "Entrez votre mot de passe",
   "new_reservation": "Nouvelle réservation",
   "new_expense": "Nouvelle dépense",
   "new_unavailable": "Nouvelle indsiponibilité",
@@ -11,5 +12,8 @@
   "price": "Prix",
   "amount": "Montant",
   "from": "Du",
-  "to": "au"
+  "to": "au",
+  "traveler": "Voyageur",
+  "travelers": "Voyageurs",
+  "no_notification": "Pas de notifications"
 }

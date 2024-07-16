@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:tayarim_mobile/utils/translation_loader.dart';
 
 import '../models/notification_depense.dart';
 import 'date_formatter.dart';
 
 class NotificationDepenseWidget extends StatelessWidget {
-  const NotificationDepenseWidget({super.key, required this.content});
+  NotificationDepenseWidget({super.key, required this.content});
   final NotificationDepense content;
+
+  final i18n = TranslationLoader();
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +16,12 @@ class NotificationDepenseWidget extends StatelessWidget {
       title: Column(children: [
         Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Text(
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
-                "Nouvelle dépense",
+                i18n.getTranslation('password_hint'),
               ),
             ),
             Text(
@@ -36,7 +39,7 @@ class NotificationDepenseWidget extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 14,
               ),
-              "Appartement : ${content.logementTitre}",
+              "${i18n.getTranslation('house')} : ${content.logementTitre}",
             ),
           ],
         ),
@@ -59,7 +62,7 @@ class NotificationDepenseWidget extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 14,
                     ),
-                    "Libellé : ${content.libelleDepense}",
+                    "${i18n.getTranslation('label')} : ${content.libelleDepense}",
                   ),
                 ]
             ),
@@ -69,7 +72,7 @@ class NotificationDepenseWidget extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 14,
                   ),
-                  "Prix : ${content.prix} €",
+                  "${i18n.getTranslation('price')} : ${content.prix} €",
                 ),
               ],
             ),
